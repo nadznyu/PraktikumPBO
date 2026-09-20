@@ -40,12 +40,21 @@ public class Anggota {
     }
 
     public void angsur(double besarAngsuran) {
-        this.jumlahPinjaman -= besarAngsuran;
-        if (this.jumlahPinjaman < 0) {
-            this.jumlahPinjaman = 0;
+        double minimalAngsuran = 0.10 * this.jumlahPinjaman;
+
+        if (this.jumlahPinjaman <= 0) {
+            System.out.println("Tidak ada pinjaman saat ini.");
+            return;
+        }
+
+        if (besarAngsuran < minimalAngsuran) {
+            System.out.println("Maaf, angsuran harus 10% dari jumlah pinjaman.");
+        } else {
+            this.jumlahPinjaman -= besarAngsuran;
+            if (this.jumlahPinjaman < 0) {
+                this.jumlahPinjaman = 0;
+            }
         }
     }
 
 }
-
-
